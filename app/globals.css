@@ -9,4 +9,12 @@
   .button-email {
     @apply border rounded-md w-52 text-center shadow px-4 py-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 active:bg-blue-700 transition duration-300 cursor-pointer;
   }
+
+  .button-light {
+    @apply border rounded-md w-52 text-center shadow px-4 py-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 active:bg-blue-700 transition duration-300 cursor-pointer;
+  }
+
+  .button-dark {
+    @apply border rounded-md w-52 text-center shadow px-4 py-2 bg-slate-600 text-white font-semibold hover:bg-slate-700 active:bg-slate-800 transition duration-300 cursor-pointer;
+  }
 }

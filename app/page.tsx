@@ -1,33 +1,47 @@
 "use client";
-import { useFormData } from "./context/formData";
+import { useAppState } from "./context/state";
 
 export default function Home() {
-  const { formData, setFormData } = useFormData(); // memanggil dengan customHooks
-  // console.log(formData);
+  const { formData, setFormData, isDarkMode, setIsDarkMode } = useAppState(); // Mengakses semua state
 
-  // Ketika memperbarui state berbentuk objek, Anda harus menggunakan spread operator untuk menyebarkan nilai sebelumnya dan mengganti hanya properti yang ingin diubah.
   const handleClickButton = () => {
     setFormData((prev) => ({
-      ...prev, // Menyalin properti sebelumnya
-      name: "Budiono", // Memperbarui properti name
+      ...prev,
+      name: "Budiono",
     }));
   };
 
   const handleClickButtonEmail = () => {
     setFormData((prev) => ({
       ...prev,
-      email: "budiono@gmail.com", // Memperbarui properti email
+      email: "budiono@gmail.com",
     }));
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode((prev) => !prev);
+  };
+
   return (
-    <div className="p-5">
-      <div className="button" onClick={handleClickButton}>
-        {formData.name}
+    <main
+      className={`p-5 flex justify-between items-center ${
+        isDarkMode ? "bg-slate-500" : "bg-white"
+      } h-screen`}
+    >
+      <section>
+        <div className="button" onClick={handleClickButton}>
+          {formData.name}
+        </div>
+        <div className="button-email" onClick={handleClickButtonEmail}>
+          {formData.email}
+        </div>
+      </section>
+      <div
+        className={`${isDarkMode ? "button-dark" : "button-light"}`}
+        onClick={toggleDarkMode}
+      >
+        {isDarkMode ? "Dark Mode Active" : "Light Mode Active"}
       </div>
-      <div className="button-email" onClick={handleClickButtonEmail}>
-        {formData.email}
-      </div>
-    </div>
+    </main>
   );
 }

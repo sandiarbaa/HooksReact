@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import FormDataContextProvider from "./context/formData";
+import { StateContextProvider } from "./context/state";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <FormDataContextProvider>
+    <StateContextProvider>
       <html lang="en">
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -33,6 +33,6 @@ export default function RootLayout({
           {children}
         </body>
       </html>
-    </FormDataContextProvider>
+    </StateContextProvider>
   );
 }
