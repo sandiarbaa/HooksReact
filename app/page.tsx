@@ -1,47 +1,22 @@
 "use client";
 import { useAppState } from "./context/state";
+import MainLayouts from "./layouts/MainLayouts";
 
 export default function Home() {
-  const { formData, setFormData, isDarkMode, setIsDarkMode } = useAppState(); // Mengakses semua state
-
-  const handleClickButton = () => {
-    setFormData((prev) => ({
-      ...prev,
-      name: "Budiono",
-    }));
-  };
-
-  const handleClickButtonEmail = () => {
-    setFormData((prev) => ({
-      ...prev,
-      email: "budiono@gmail.com",
-    }));
-  };
-
-  const toggleDarkMode = () => {
-    setIsDarkMode((prev) => !prev);
-  };
-
+  const { isDarkMode } = useAppState();
   return (
-    <main
-      className={`p-5 flex justify-between items-center ${
-        isDarkMode ? "bg-slate-500" : "bg-white"
-      } h-screen`}
-    >
-      <section>
-        <div className="button" onClick={handleClickButton}>
-          {formData.name}
-        </div>
-        <div className="button-email" onClick={handleClickButtonEmail}>
-          {formData.email}
-        </div>
-      </section>
-      <div
-        className={`${isDarkMode ? "button-dark" : "button-light"}`}
-        onClick={toggleDarkMode}
-      >
-        {isDarkMode ? "Dark Mode Active" : "Light Mode Active"}
-      </div>
-    </main>
+    <MainLayouts>
+      <h1 className={`${isDarkMode ? "title-dark" : "title-light"}`}>
+        Home Page
+      </h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe
+        similique eius, doloremque beatae voluptas repudiandae perspiciatis vel
+        reiciendis. Porro rem quasi reiciendis, architecto veniam tempora id?
+        Corporis aut, nihil quasi cumque delectus atque mollitia aliquid nulla
+        quas nisi aspernatur sunt hic autem in blanditiis explicabo suscipit,
+        debitis quisquam expedita a?
+      </p>
+    </MainLayouts>
   );
 }
